@@ -22,16 +22,9 @@ const FlowContext = createContext<FlowContextProps | undefined>(undefined)
 const STORAGE_KEY = 'sevenary_flow_stage'
 
 export const FlowProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    // Persistent state: Initialize from localStorage to allow resuming after refresh
-    const [stage, setStageState] = useState<FlowStage>(() => {
-        try {
-            const saved = localStorage.getItem(STORAGE_KEY)
-            const parsed = saved ? parseInt(saved, 10) : 1
-            return (parsed >= 1 && parsed <= 4 ? parsed : 1) as FlowStage
-        } catch {
-            return 1
-        }
-    })
+    // We always start at Stage 1 to ensure the intro sequence plays.
+    // Persistence is disabled for initialization to avoid skipping the intro on page refresh.
+    const [stage, setStageState] = useState<FlowStage>(1)
 
     // Sync with localStorage on changes
     useEffect(() => {
