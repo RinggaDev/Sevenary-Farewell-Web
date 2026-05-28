@@ -1,0 +1,150 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  /* White background spec */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  overflow: hidden;
+  cursor: none;
+  /* Hide real cursor */
+}
+
+/* Grid background decor (centered, space right/left 40px) */
+.gridDecor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 80px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  /* No gap between cells */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grid3x4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.gridCell {
+  border: 1px solid #000000;
+  opacity: 0.2;
+  aspect-ratio: 1 / 1;
+  /* Square cells */
+  /* Animated to 0.2 via GSAP */
+}
+
+/* Main title "Ringga X Sevenary" absolute centered */
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111111;
+  white-space: nowrap;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  /* Animated to 1 via GSAP */
+  transition: transform 0.3s ease;
+}
+
+.ringga {
+  font-family: var(--font-sora);
+  font-weight: 800;
+  color: #20202C;
+}
+
+.sevenary {
+  font-family: var(--font-caslon);
+  color: #20202C;
+  font-weight: normal;
+  font-style: italic;
+  /* margin-left: 0em; */
+}
+
+.separator {
+  font-family: var(--font-sora);
+  font-weight: 300;
+  opacity: 1;
+  color: #20202C;
+  margin: 0 0.1em;
+}
+
+.title:hover {
+  transform: translate(-50%, -50%) scale(1.03);
+  /* Hover effect */
+}
+
+/* Bottom copyright info */
+.copyright {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-sora);
+  font-size: 12px;
+  color: #888888;
+  z-index: 2;
+  opacity: 0;
+  /* Animated via GSAP */
+}
+
+/* Custom mouse follower cursor container */
+.customCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #20202C;
+  border-radius: 50px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  font-family: var(--font-sora);
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #737373;
+  /* solid gray border */
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.cursorIcon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .gridDecor {
+    width: calc(100% - 40px);
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .customCursor {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+}

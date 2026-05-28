@@ -1,0 +1,54 @@
+.transitionWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1001; /* Above CreditScreen (1000) and CreatorScreen (999) */
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  pointer-events: none;
+}
+
+/* Each block initially fills the container's height */
+.block {
+  flex: 1;
+  height: 100%;
+  background-color: #0a0a0a;
+  will-change: transform;
+}
+
+/* TABLET RESPONSIVENESS (1024px and below) */
+@media (max-width: 1024px) {
+  /* Reduce number of columns for cleaner transition on tablets */
+  .block:nth-child(n+7) {
+    display: none;
+  }
+}
+
+/* MOBILE RESPONSIVENESS (768px and below) */
+@media (max-width: 768px) {
+  /* Keep vertical columns as requested */
+  .transitionWrapper {
+    flex-direction: row;
+  }
+
+  .block {
+    height: 100%;
+    width: auto;
+  }
+
+  /* Show fewer columns on mobile to keep the effect focused */
+  .block:nth-child(n+6) {
+    display: none;
+  }
+}
+
+/* SMALL HANDPHONE OPTIMIZATION (480px and below) */
+@media (max-width: 480px) {
+  .block {
+    /* Prevent sub-pixel rendering gaps on high-DPI screens (horizontal) */
+    margin: 0 -0.5px;
+  }
+}

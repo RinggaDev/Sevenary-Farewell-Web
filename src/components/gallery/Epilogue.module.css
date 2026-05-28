@@ -1,0 +1,130 @@
+.epilogueSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Padding bawah 180px agar teks penutup tidak tertutup oleh Fixed HUD Footer */
+    padding: 0 70px 180px 70px;
+    background: transparent;
+    /* Tetap transparan agar menyatu dengan base container */
+    z-index: 2;
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.hugeText {
+    font-family: var(--font-caslon);
+    font-size: clamp(5rem, 14vw, 12rem);
+    line-height: 0.82;
+    font-weight: 400;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    color: #0a0a0a;
+    margin: 0 0 3rem 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+    /* explicitly allow overflow */
+    min-height: 1.2em;
+    /* give at least some height */
+}
+
+.hugeTextMask {
+    /* Remove overflow: hidden to prevent clipping */
+    overflow: visible;
+    /* Increase bottom padding to accommodate descenders / transform */
+    padding-bottom: 0.2em;
+    /* Ensure the container can expand freely */
+    display: inline-block;
+    width: auto;
+}
+
+.hugeTextMask span {
+    display: block;
+    transform-origin: center bottom;
+    will-change: transform, opacity;
+    /* Add a tiny top margin if needed for ascenders (optional) */
+    /* margin-top: 0.05em; */
+}
+
+/* ============================================
+   UI ELEMENTS
+   ============================================ */
+.divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(10, 10, 10, 0.2);
+    margin-bottom: 3rem;
+    transform-origin: top center;
+    will-change: transform;
+}
+
+.subText {
+    font-family: var(--font-sora);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(10, 10, 10, 0.6);
+    margin: 0;
+}
+
+/* ============================================
+   DARK MODE & RESPONSIVE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    .hugeText {
+        color: #fefefe;
+    }
+
+    .divider {
+        background: rgba(254, 254, 254, 0.2);
+    }
+
+    .subText {
+        color: rgba(254, 254, 254, 0.6);
+    }
+}
+
+@media (max-width: 1024px) {
+    .epilogueSection {
+        padding: 0 40px 160px 40px;
+    }
+
+    .divider {
+        height: 60px;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .epilogueSection {
+        padding: 0 20px 220px 20px;
+        /* Padding bawah lebih besar karena footer mobile numpuk ke bawah */
+    }
+
+    .hugeText {
+        font-size: clamp(4rem, 18vw, 6.5rem);
+        margin-bottom: 2rem;
+    }
+
+    .divider {
+        height: 40px;
+        margin-bottom: 1.5rem;
+    }
+}

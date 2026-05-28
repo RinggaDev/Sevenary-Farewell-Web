@@ -1,0 +1,234 @@
+.archiveContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #fefefe;
+}
+
+.slider {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    will-change: transform;
+}
+
+.panel {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 140px;
+    overflow: hidden;
+}
+
+/* Background Year Stamp */
+.bgYear {
+    position: absolute;
+    font-family: var(--font-caslon);
+    font-size: clamp(12rem, 35vw, 32rem);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(10, 10, 10, 0.02);
+    bottom: -5rem;
+    right: 2%;
+    line-height: 0.8;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform;
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panel:hover .bgYear {
+    color: rgba(10, 10, 10, 0.05);
+    transform: scale(1.02) translateX(-30px);
+}
+
+/* Content Layout Grid */
+.contentLayout {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Typography & Text */
+.metaSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.exhibitionNumber {
+    font-family: var(--font-sora);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(10, 10, 10, 0.4);
+    margin-bottom: 1rem;
+}
+
+.panelTitle {
+    font-family: var(--font-caslon);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-style: italic;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+    color: #0a0a0a;
+    letter-spacing: -0.02em;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: default;
+}
+
+.panelTitle:hover {
+    transform: translateX(40px);
+    color: #000;
+}
+
+.panelCopy {
+    font-family: var(--font-sora);
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(10, 10, 10, 0.7);
+    margin: 0;
+    max-width: 440px;
+}
+
+/* Image Showcase Frame */
+.imageSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.imagePlaceholderFrame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: rgba(10, 10, 10, 0.02);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    border-radius: 4px;
+    padding: 1rem;
+    box-shadow: 0 30px 60px rgba(10, 10, 10, 0.03);
+    align-content: center;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+
+.imagePlaceholderFrame:hover {
+    transform: scale(1.04) rotate(-1.5deg);
+    box-shadow: 0 45px 100px rgba(0, 0, 0, 0.1);
+}
+
+.imageInner {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(10, 10, 10, 0.15);
+    transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.imagePlaceholderFrame:hover .imageInner {
+    transform: scale(1.15);
+}
+
+.placeholderLabel {
+    font-family: var(--font-sora);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(10, 10, 10, 0.3);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    .archiveContainer,
+    .panel {
+        background: #0a0a0a;
+    }
+
+    .bgYear {
+        color: rgba(254, 254, 254, 0.02);
+    }
+
+    .panel:hover .bgYear {
+        color: rgba(254, 254, 254, 0.05);
+    }
+
+    .panelTitle {
+        color: #fefefe;
+    }
+
+    .panelCopy {
+        color: rgba(254, 254, 254, 0.7);
+    }
+
+    .exhibitionNumber {
+        color: rgba(254, 254, 254, 0.4);
+    }
+
+    .imagePlaceholderFrame {
+        background: rgba(254, 254, 254, 0.02);
+        border-color: rgba(254, 254, 254, 0.08);
+    }
+
+    .imageInner {
+        background: rgba(254, 254, 254, 0.03);
+        border-color: rgba(254, 254, 254, 0.15);
+    }
+
+    .placeholderLabel {
+        color: rgba(254, 254, 254, 0.3);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+    .panel {
+        padding: 0 90px;
+    }
+
+    .contentLayout {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel {
+        padding: 0 40px;
+    }
+
+    .contentLayout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .imagePlaceholderFrame {
+        aspect-ratio: 16 / 10;
+    }
+
+    .bgYear {
+        bottom: 2rem;
+        font-size: 14rem;
+    }
+
+    .panelTitle:hover {
+        transform: translateX(10px);
+    }
+}

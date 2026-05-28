@@ -1,0 +1,129 @@
+.dialogueSection {
+  position: relative;
+  width: 100%;
+  padding: 10rem 70px 15rem 70px;
+  background: transparent;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  cursor: none; /* Hide default cursor */
+}
+
+.conversationContainer {
+  position: relative;
+  z-index: 5; /* Text below trail images */
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base Line Wrapper */
+.lineWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin-bottom: 20vh; /* Jeda scroll yang sinematik antar dialog */
+  will-change: transform, opacity, filter;
+}
+
+/* Baris Terakhir tidak perlu margin bawah berlebih */
+.lineWrapper:last-child {
+  margin-bottom: 0;
+}
+
+.speakerLabel {
+  font-family: var(--font-sora);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(10, 10, 10, 0.4);
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   PAST VOICE (2023) - Kiri, Sans-serif
+   ============================================ */
+.past {
+  align-self: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.past .dialogueText {
+  font-family: var(--font-sora);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(10, 10, 10, 0.7);
+  margin: 0;
+}
+
+/* ============================================
+   PRESENT VOICE (2026) - Kanan, Serif Italic
+   ============================================ */
+.present {
+  align-self: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  margin-top: -10vh; /* Menarik respons sedikit lebih dekat ke pertanyaan */
+}
+
+.present .dialogueText {
+  font-family: var(--font-caslon);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.trailImage {
+  position: absolute;
+  width: 120px;
+  height: auto;
+  pointer-events: none;
+  z-index: 10; /* Above text */
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  will-change: transform, opacity;
+}
+
+.customPointer {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #0a0a0a;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* ============================================
+   DARK MODE & RESPONSIVE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .speakerLabel { color: rgba(254, 254, 254, 0.4); }
+  .past .dialogueText { color: rgba(254, 254, 254, 0.7); }
+  .present .dialogueText { color: #fefefe; }
+  .customPointer { border-color: #fefefe; }
+}
+
+@media (max-width: 1024px) {
+  .dialogueSection { padding: 8rem 40px 10rem 40px; }
+  .lineWrapper { max-width: 80%; }
+}
+
+@media (max-width: 768px) {
+  .dialogueSection { padding: 6rem 20px 8rem 20px; }
+  .lineWrapper { max-width: 95%; margin-bottom: 15vh; }
+  .present { margin-top: -5vh; }
+  .past .dialogueText { font-size: clamp(1.2rem, 5vw, 1.8rem); }
+  .present .dialogueText { font-size: clamp(1.5rem, 6.5vw, 2.2rem); }
+}

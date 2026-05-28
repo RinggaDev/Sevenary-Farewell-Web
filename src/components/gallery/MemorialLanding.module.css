@@ -1,0 +1,523 @@
+/* ============================================
+   CONTAINER & BASE (FORCED DARK THEME)
+   ============================================ */
+.container {
+  position: relative;
+  width: 100%;
+  background: #0a0a0a;
+  color: #fefefe;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   TEXTURE OVERLAY
+   ============================================ */
+.texture {
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* ============================================
+   GRID FRAMES & ANCHORS (VIEWFINDER HUD)
+   ============================================ */
+.gridVerticalLeft,
+.gridVerticalRight,
+.gridHorizontalTop,
+.gridHorizontalBottom {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  background: rgba(254, 254, 254, 0.12);
+}
+
+.gridVerticalLeft {
+  top: 0;
+  left: 70px;
+  width: 1px;
+  height: 100%;
+  transform-origin: top center;
+}
+
+.gridVerticalRight {
+  top: 0;
+  right: 70px;
+  width: 1px;
+  height: 100%;
+  transform-origin: top center;
+}
+
+.gridHorizontalTop {
+  top: 105px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform-origin: left center;
+}
+
+.gridHorizontalBottom {
+  bottom: 150px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform-origin: left center;
+}
+
+/* ============================================
+   BRAND - ALIGNED TO VERTICAL GRID
+   ============================================ */
+.brand {
+  position: fixed;
+  top: 3rem;
+  left: 80px;
+  font-family: var(--font-caslon);
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fefefe;
+  z-index: 10;
+}
+
+/* ============================================
+   SOUND TOGGLE & CONTROLS - ALIGNED TO VERTICAL GRID
+   ============================================ */
+.topRightControls {
+  position: fixed;
+  top: 3rem;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.soundToggle,
+.repeatIntroButton {
+  height: 44px;
+  padding: 0 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(254, 254, 254, 0.1);
+  border-radius: 100px;
+  color: #fefefe;
+  font-family: var(--font-sora);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer !important;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.soundToggle {
+  padding: 0;
+  width: 44px;
+}
+
+.soundToggle:hover,
+.repeatIntroButton:hover {
+  background: #fefefe;
+  color: #0a0a0a;
+  border-color: #fefefe;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.soundToggle:active,
+.repeatIntroButton:active {
+  transform: translateY(-1px);
+}
+
+.soundToggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================
+   HERO SECTION & CONTENT CONTAINER
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 105px 70px 150px 70px;
+  z-index: 2;
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 1600px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.textContainer {
+  flex: 1;
+  z-index: 2;
+  position: relative;
+}
+
+.heroSubtitle {
+  font-family: var(--font-sora);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  color: rgba(254, 254, 254, 0.5);
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.heroTitleContainer {
+  overflow: visible;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.heroTitle {
+  margin: 0;
+  padding: 0;
+  line-height: 0.85;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.heroTitleWord {
+  display: block;
+  font-family: var(--font-caslon);
+  /* Fluid from 3rem (mobile) → 16rem (desktop), driven by viewport width */
+  font-size: clamp(3rem, 15vw, 16rem);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  color: #fefefe;
+  transform-origin: center center;
+  white-space: nowrap;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.6s ease;
+  will-change: transform, letter-spacing;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .heroTitleWord:hover {
+    transform: scale(1.02);
+    letter-spacing: -0.01em;
+    color: rgba(254, 254, 254, 0.7);
+    cursor: default;
+  }
+}
+
+/* ============================================
+   INTERACTIVE SHOWCASE OVERLAPPING IMAGES
+   ============================================ */
+.imageContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Fluid width & height that scales nicely with viewport */
+  width: clamp(160px, 18vw, 300px);
+  height: clamp(200px, 24vw, 380px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.imageWrapper1,
+.imageWrapper2 {
+  position: absolute;
+  overflow: hidden;
+  background: #1a1a1a;
+  border: 1px solid rgba(254, 254, 254, 0.1);
+  box-shadow: 0 24px 48px rgba(10, 10, 10, 0.06);
+  border-radius: 4px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageWrapper1 {
+  width: 88%;
+  height: 88%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.imageWrapper2 {
+  width: 82%;
+  height: 82%;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageWrapper1:hover {
+  transform: translate(-15px, -10px) rotate(-4deg) scale(1.03) !important;
+  box-shadow: 0 40px 80px rgba(10, 10, 10, 0.14);
+  z-index: 3;
+}
+
+.imageWrapper2:hover {
+  transform: translate(15px, 10px) rotate(5deg) scale(1.03) !important;
+  box-shadow: 0 40px 80px rgba(10, 10, 10, 0.14);
+  z-index: 3;
+}
+
+.imageWrapper1:hover .heroImage,
+.imageWrapper2:hover .heroImage {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   FOOTER - ALIGNED TO SYSTEM GRID
+   ============================================ */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 70px 3rem 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3rem;
+  z-index: 101;
+  pointer-events: none;
+  border-top-color: rgba(254, 254, 254, 0.08);
+}
+
+.metaBlock {
+  flex: 0 1 auto;
+  pointer-events: auto;
+}
+
+.metaLabel {
+  display: block;
+  font-family: var(--font-sora);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(254, 254, 254, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.metaText {
+  font-family: var(--font-sora);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #fefefe;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN 
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .heroTitleWord {
+    font-size: clamp(3.5rem, 16vw, 12rem);
+  }
+
+  .hero,
+  .footer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .gridVerticalLeft {
+    left: 40px;
+  }
+
+  .gridVerticalRight {
+    right: 40px;
+  }
+
+  .brand {
+    left: 40px;
+  }
+
+  .topRightControls {
+    right: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .heroContent {
+    gap: 0;
+    padding-top: 2rem;
+  }
+
+  .heroTitleWord {
+    font-size: clamp(3rem, 14vw, 9rem);
+    letter-spacing: -0.035em;
+  }
+
+  /* On tablets the image drops below the title to avoid overlap */
+  .imageContainer {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 2rem auto 0;
+    width: clamp(150px, 32vw, 220px);
+    height: clamp(180px, 40vw, 280px);
+  }
+
+  .heroContent {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand {
+    top: 4rem;
+    left: 20px;
+    font-size: 1.3rem;
+  }
+
+  .topRightControls {
+    top: 4rem;
+    right: 20px;
+  }
+
+  .gridVerticalLeft {
+    left: 20px;
+  }
+
+  .gridVerticalRight {
+    right: 20px;
+  }
+
+  .hero {
+    padding: 120px 20px 80px 20px;
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .heroSubtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .heroTitle {
+    line-height: 0.9;
+    gap: 0.1rem;
+  }
+
+  .heroTitleWord {
+    /* true fluid: never exceeds viewport — no fixed max causing dead zones */
+    font-size: clamp(2.8rem, 16vw, 6rem);
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+  }
+
+  /* Image repositions below title, properly fluid */
+  .imageContainer {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 2.5rem auto 0;
+    width: clamp(140px, 40vw, 200px);
+    height: clamp(170px, 50vw, 250px);
+  }
+
+  .footer {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2.5rem 20px;
+    background: #0a0a0a;
+    border-top: 1px solid rgba(254, 254, 254, 0.08);
+    pointer-events: auto;
+  }
+
+  .metaBlock {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    top: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .topRightControls {
+    top: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .repeatIntroButton {
+    display: none; /* hide on very small screens to save space */
+  }
+
+  .hero {
+    padding: 100px 16px 60px 16px;
+  }
+
+  .heroTitleWord {
+    font-size: clamp(2.4rem, 18vw, 4.5rem);
+    letter-spacing: -0.025em;
+  }
+
+  .imageContainer {
+    margin-top: 2rem;
+    width: clamp(130px, 50vw, 180px);
+    height: clamp(160px, 62vw, 220px);
+  }
+
+  /* Reduce hover offsets on touch devices to keep images in frame */
+  .imageWrapper1:hover {
+    transform: translate(-8px, -6px) rotate(-3deg) scale(1.02) !important;
+  }
+
+  .imageWrapper2:hover {
+    transform: translate(8px, 6px) rotate(3deg) scale(1.02) !important;
+  }
+}
