@@ -50,8 +50,8 @@ public/             # Static files
 
 ## 📝 License
 
-MIT (or your license here)
+MIT 
 
 ---
 
-Feel free to expand this README with more detailed feature explanations, list of contributors, or deployment instructions!
+©️ Copyright 2026 - Dhabith Zabran Tringgana.
