@@ -1,5 +1,7 @@
 # Sevenary Farewell Web
 
+
+
 A farewell web application dedicated to the Sevenary Generation.
 
 ## ✨ Features
@@ -13,6 +15,10 @@ A farewell web application dedicated to the Sevenary Generation.
 - Modular and easily extensible structure
 
 ## 🚀 Getting Started
+
+**You Can Also open on Websitre Live!**
+Open in your Browser Compact on every Device but *reccomend on Desktop*
+```sevenary-farewell-web.vercel.app```
 
 1. **Install dependencies:**
    ```bash
