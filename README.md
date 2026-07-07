@@ -19,7 +19,7 @@ A farewell web application dedicated to the Sevenary Generation.
 **You Can Also open on Websitre Live!**
 Open in your Browser Compact on every Device but *reccomend on Desktop*
 
-[sevenary-farewell-web.vercel.app](sevenary-farewell-web.vercel.app)
+[sevenary-farewell-web.vercel.app](sevenary-farewell-web.vercel.app/)
 
 1. **Install dependencies:**
    ```bash
