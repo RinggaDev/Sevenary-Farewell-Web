@@ -1,12 +1,19 @@
 # Sevenary Farewell Web
+A farewell web application dedicated to the Sevenary Generation.
+---
+
 <img width="1863" height="956" alt="image" src="https://github.com/user-attachments/assets/0014e043-752c-45ea-83a6-f570dd91c2f8" />
+
+---
 
 <img width="1877" height="963" alt="image" src="https://github.com/user-attachments/assets/f4c5f5f0-52e4-4043-9533-b1875105b773" />
 
+---
+
 <img width="1863" height="881" alt="image" src="https://github.com/user-attachments/assets/9ec8654f-3c9a-45f0-9644-83759aeff30e" />
 
+---
 
-A farewell web application dedicated to the Sevenary Generation.
 
 ## ✨ Features
 
